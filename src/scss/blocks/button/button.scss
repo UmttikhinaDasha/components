@@ -1,0 +1,201 @@
+@import '../../less/variables';
+@import '../../less/mixins/mixins';
+
+.button {
+    position: relative;
+    border-radius: 10px;
+    border: none;
+    transition: background-color 0.4s;
+
+    &__text,
+    &_loading {
+        font-family: $font-family;
+        font-weight: $font-weight;
+        line-height: $line-height;
+        letter-spacing: $letter-spacing;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+
+    &_loading &__text {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &_loading:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid transparent;
+        border-top-color: $sky-blue;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+    }
+
+    @keyframes button-loading-spinner {
+        from {
+            transform: rotate(0turn);
+        }
+
+        to {
+            transform: rotate(1turn);
+        }
+    }
+}
+
+//theme primary
+.button_theme_primary {
+    background: $sky-blue;
+    border: 2px solid $sky-blue;
+
+    .button__text {
+        color: $light-gray;
+    }
+
+    &:hover {
+        background: $dark-blue;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.5rem $transparent-blue;
+    }
+
+    &:active {
+        box-shadow: none;
+        background: $sky-blue;
+    }
+
+    &.button_loading:after {
+        border-top-color: $light-gray;
+    }
+}
+
+//theme secondary
+.button_theme--secondary {
+    background: none;
+    border: 2px solid $sky-blue;
+
+    .button__text {
+        color: $sky-blue;
+    }
+
+    &:hover {
+        border: 2px solid $dark-blue;
+
+        .button__text {
+            color: $dark-blue;
+        }
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.5rem $transparent-blue;
+    }
+
+    &:active {
+        box-shadow: none;
+        border: 2px solid $sky-blue;
+
+        .button__text {
+            color: $sky-blue;
+        }
+    }
+
+    &.button_loading:after {
+        border-top-color: $sky-blue;
+    }
+}
+
+//theme subtle
+.button_theme_subtle {
+    background: none;
+    border: 2px solid $gray;
+
+    .button__text {
+        color: $sky-blue;
+    }
+
+    &:hover {
+        .button__text {
+            color: $dark-blue;
+        }
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.5rem $transparent-gray;
+    }
+
+    &:active {
+        box-shadow: none;
+        border: 2px solid $gray;
+
+        .button__text {
+            color: $sky-blue;
+        }
+    }
+
+    &.button_loading:after {
+        border-top-color: $sky-blue;
+    }
+}
+
+//theme text
+.button_theme_text {
+    background: none;
+    width: 100px !important;
+
+    .button__text {
+        color: $sky-blue;
+    }
+
+    &:hover {
+        .button__text {
+            color: $dark-blue;
+        }
+    }
+
+    &:focus {
+        background: $transparent-gray;
+        border-radius: 40px;
+    }
+
+    &:active {
+        background: none;
+
+        .button__text {
+            color: $sky-blue;
+        }
+    }
+
+    &.button_loading:after {
+        content: 'Loading...';
+        color: $sky-blue;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        animation: none;
+    }
+}
+
+.button_size_lg {
+    @include button-size(64px, 200px, 16px);
+}
+
+.button_size_md {
+    @include button-size(56px, 200px, 16px);
+}
+
+.button_size_sm {
+    @include button-size(40px, 120px, 14px);
+}

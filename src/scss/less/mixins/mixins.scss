@@ -1,0 +1,16 @@
+@import '../../less/variables';
+
+@mixin button-size($height, $width, $font-size) {
+    height: $height;
+    width: $width;
+
+    .button__text {
+        font-size: $font-size;
+    }
+
+    &.button_loading:after {
+        font-size: $font-size;
+        height: 1em;
+        width: 1em;
+    }
+}

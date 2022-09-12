@@ -1,0 +1,12 @@
+.wrapper {
+    padding: 2em;
+
+    &__row {
+        margin: 30px 0;
+        padding: 30px 0;
+    }
+
+    &__row * {
+        margin: 0 25px;
+    }
+}
